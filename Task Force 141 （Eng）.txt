@@ -1,0 +1,159 @@
+#include "stdafx.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <Windows.h>
+#pragma warning(disable:4996)
+#define STARS "*******************************"
+int F_M(int);
+int S_M(int);
+int T_M(int);
+
+
+int main(void)
+{
+	int kills = 0;
+	printf("%s\n", STARS);
+	printf("You are a soldiers£¬\n");
+	printf("Today you are sent to an embassy to protect our ambassador.\n");
+	printf("All of a sudden, you heard the voice of the enemy!\n");
+	printf("What will you do?\n");
+	printf("%s\n", STARS);
+	getchar();
+	kills = F_M(kills);
+	printf("%s\n", STARS);
+	printf("Well\n");
+	printf("Shit,our ambassador is lost!\n");
+	printf("How to save him?\n");
+	printf("%s\n", STARS);
+	getchar();
+	kills = S_M(kills);
+	printf("%s\n", STARS);
+	printf("Are you from the dead enemy picked up a bazooka.\n");
+	printf("Back inside the embassy.\n");
+	printf("The noise of the engine suddenly come out of the window!!!\n");
+	printf("Look out of the window, and there are as many as 13 enemies ready to break in!\n");
+	printf("What can we do?\n");
+	printf("%s\n", STARS);
+	getchar();
+	kills = T_M(kills);
+	return 0;
+}
+int F_M(int kills_f)
+{
+	char choice_f;
+	printf("%s\n", STARS);
+	printf("a.Run away.           b.Stay\n");
+	printf("c.Shoot               q.Exit\n");
+	printf("%s\n", STARS);
+	printf("Please enter your options:");
+	scanf("%c", &choice_f);
+	while (getchar() != '\n');
+	switch (choice_f)
+	{
+	case 'a':
+		printf("The enemy did not find you \n");
+		break;
+	case 'b':
+		printf("The enemy shot and killed you \n");
+		printf("Game over!\n");
+		system("pause");
+		exit(0);
+		break;
+	case 'c':
+		printf("You killed an enemy\n");
+		kills_f++;
+		printf("Kills:%d\n", kills_f);
+		break;
+	case 'q':
+		printf("bye£¡\n");
+		exit(0);
+	default:
+		printf("Wrong!\n");
+		system("pause");
+		exit(0);
+		break;
+	}
+	return kills_f;
+}
+
+int S_M(int kills_s)
+{
+	char choice_s;
+	printf("%s\n", STARS);
+	printf("a. A quick rush to enemy pooling points    b.Hide \n");
+	printf("c. Among the ambassador's enemy fire       q.Exxit \n");
+	printf("%s\n", STARS);
+	scanf("%c", &choice_s);
+	while (getchar() != '\n');
+	switch (choice_s)
+	{
+	case 'a':
+		printf("After arriving at the point of collection, a large number of enemies were eliminated and the ambassador was saved. \n");
+		kills_s += 5;
+		printf("É±µÐÊý£º%d\n", kills_s);
+		break;
+	case 'b':
+		printf("The enemy took the ambassador off!!!n");
+		printf("Mission failed\n");
+		system("pause");
+		exit(0);
+	case'c':
+		printf("The enemy did not kill, but killed the ambassador!\n");
+		printf("Mission falied\n");
+		system("pause");
+		exit(0);
+	case 'q':
+		printf("bye£¡\n");
+		exit(0);
+	default:
+		printf("Wrong!\n");
+		system("pause");
+		exit(0);
+		break;
+	}
+	return kills_s;
+}
+
+int T_M(int kills_t)
+{
+	char choice_t;
+	getchar();
+	printf("%s\n", STARS);
+	printf("a. Fire bazooka     b.Shoot there. \n");
+	printf("c.Do nothing.        q.Exit.\n");
+	printf("%s\n", STARS);
+	scanf("%c", &choice_t);
+	while (getchar() != '\n');
+	switch (choice_t)
+	{
+	case 'a':
+		printf("The vehicle was destroyed, the enemy was annihilated, Mission successful!\n");
+		printf("Game over.\n");
+		kills_t += 13;
+		printf("Kills£º%d\n", kills_t);
+		system("pause");
+		exit(0);
+	case 'b':
+		printf("Your first shot hit the tank of the car! The car blew up, the enemy was annihilated! Mission successful\n");
+		printf("Game over.\n");
+		kills_t += 13;
+		printf("Kills:%d\n", kills_t);
+		system("pause");
+		exit(0);
+	case 'c':
+		printf("The ambassador was snatched. Mission failed.\n");
+		printf("Game over.\n");
+		printf("Kills:%d\n", kills_t);
+		system("pause");
+		exit(0);
+	case 'q':
+		printf("bye£¡\n");
+		exit(0);
+	default:
+		printf("Wrong!\n");
+		system("pause");
+		exit(0);
+		break;
+	}
+	return kills_t;
+}
