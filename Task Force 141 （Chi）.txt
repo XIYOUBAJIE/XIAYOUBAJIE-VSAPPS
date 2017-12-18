@@ -1,0 +1,159 @@
+#include "stdafx.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <Windows.h>
+#pragma warning(disable:4996)
+#define STARS "*******************************"
+int F_M(int);
+int S_M(int);
+int T_M(int);
+
+
+int main(void)
+{
+	int kills = 0;
+	printf("%s\n", STARS);
+	printf("你是141特遣队中的一员，\n");
+	printf("今天你被派往一个大使馆去保护我方大使。\n");
+	printf("突然，你听到了敌人攻入的声音！\n");
+	printf("你会怎么办？\n");
+	printf("%s\n", STARS);
+	getchar();
+	kills = F_M(kills);
+	printf("%s\n", STARS);
+	printf("好的。\n");
+	printf("糟糕，大使被敌人抢走了！\n");
+	printf("怎么办呢？？\n");
+	printf("%s\n", STARS);
+	getchar();
+	kills=S_M(kills);
+	printf("%s\n", STARS);
+	printf("你从死去的敌人那里捡到一把火箭筒。\n");
+	printf("回到大使馆内部。\n");
+	printf("窗外突然传来了引擎的轰鸣声！！\n");
+	printf("向窗外一看，有多达13名敌人在那里准备突围！\n");
+	printf("怎么办？\n");
+	printf("%s\n", STARS);
+	getchar();
+	kills=T_M(kills);
+	return 0;
+}
+int F_M(int kills_f)
+{
+	char choice_f;
+	printf("%s\n", STARS);
+	printf("a.跑到旁边           b.原地不动\n");
+	printf("c.朝声源处开枪       q.退出游戏\n");
+	printf("%s\n", STARS);
+	printf("请输入你的选项：");
+	scanf("%c", &choice_f);
+	while (getchar() != '\n');
+	switch (choice_f)
+	{
+	case 'a':
+		printf("敌人没有发现你\n");
+		break;
+	case 'b':
+		printf("敌人开枪并打死了你\n");
+		printf("游戏结束。\n");
+		system("pause");
+		exit(0);
+		break;
+	case 'c':
+		printf("你打死了一名地人！\n");
+		kills_f++;
+		printf("杀敌数：%d\n", kills_f);
+		break;
+	case 'q':
+		printf("bye！\n");
+		exit(0);
+	default:
+		printf("游戏错误！\n");
+		system("pause");
+		exit(0);
+		break;
+	}
+	return kills_f;
+}
+
+int S_M(int kills_s)
+{
+	char choice_s;
+	printf("%s\n", STARS);
+	printf("a.迅速赶往敌方汇集点     b.躲着不出去\n");
+	printf("c.向背着大使的敌人开枪   q.退出游戏\n");
+	printf("%s\n", STARS);
+	scanf("%c", &choice_s);
+	while (getchar() != '\n');
+	switch (choice_s)
+	{
+	case 'a':
+		printf("到达汇集点后一举消灭了大量敌人，救回了大使\n");
+		kills_s += 5;
+		printf("杀敌数：%d\n", kills_s);
+		break;
+	case 'b':
+		printf("敌人把大使抢走了!!!\n");
+		printf("任务失败！\n");
+		system("pause");
+		exit(0);
+	case'c':
+		printf("敌人没打死，反而把大使打死了！\n");
+		printf("任务失败！\n");
+		system("pause");
+		exit(0);
+	case 'q':
+		printf("bye！\n");
+		exit(0);
+	default:
+		printf("游戏错误！\n");
+		system("pause");
+		exit(0);
+		break;
+	}
+	return kills_s;
+}
+
+int T_M(int kills_t)
+{
+	char choice_t;
+	getchar();
+	printf("%s\n", STARS);
+	printf("a.掏出火箭筒对着他们的载具就是一炮    b.朝那个地方扫射\n");
+	printf("c.什么都不做                          q.退出游戏\n");
+	printf("%s\n", STARS);
+	scanf("%c", &choice_t);
+	while (getchar() != '\n');
+	switch (choice_t)
+	{
+	case 'a':
+		printf("载具被炸毁，敌人被全歼，任务成功！\n");
+		printf("游戏结束。\n");
+		kills_t += 13;
+		printf("杀敌数：%d\n", kills_t);
+		system("pause");
+		exit(0);
+	case 'b':
+		printf("你开的第一枪就打中了汽车的油罐！汽车炸毁了，敌人被全歼！任务成功\n");
+		printf("游戏结束。\n");
+		kills_t += 13;
+		printf("杀敌数：%d\n", kills_t);
+		system("pause");
+		exit(0);
+	case 'c':
+		printf("大使被抢走了，任务失败。\n");
+		printf("游戏结束。\n");
+		printf("杀敌数：%d\n", kills_t);
+		system("pause");
+		exit(0);
+	case 'q':
+		printf("bye！\n");
+		exit(0);
+	default:
+		printf("游戏错误！\n");
+		system("pause");
+		exit(0);
+		break;
+	}
+	return kills_t;
+}
